@@ -18,11 +18,14 @@ const Header = () => {
             left: 0,
             width: '100%',
             zIndex: 1000,
-            padding: '20px 0',
-            transition: 'all 0.3s ease',
-            backgroundColor: scrolled ? 'rgba(5, 5, 5, 0.9)' : 'transparent',
-            backdropFilter: scrolled ? 'blur(10px)' : 'none',
-            borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.05)' : 'none'
+            padding: scrolled ? '15px 0' : '20px 0',
+            transition: 'all 0.2s ease-in-out',
+            backgroundColor: scrolled ? 'rgba(5, 5, 5, 0.7)' : 'transparent',
+            backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+            WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+            borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+            boxShadow: scrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
+            willChange: 'background-color, backdrop-filter, padding'
         },
         nav: {
             display: 'flex',
@@ -40,31 +43,30 @@ const Header = () => {
         },
         menu: {
             display: 'flex',
-            gap: '30px'
-        },
-        link: {
-            color: 'var(--text-secondary)',
-            fontWeight: '500',
-            position: 'relative'
+            gap: '30px',
+            alignItems: 'center',
+            margin: 0,
+            padding: 0,
+            listStyle: 'none'
         }
     };
 
     return (
         <header style={styles.header}>
             <div className="container" style={styles.nav}>
-                <div style={styles.logo}>
+                <a href="#home" style={{ ...styles.logo, cursor: 'pointer', transition: 'var(--transition)' }}>
                     Akhil<span style={styles.logoAccent}>.dev</span>
-                </div>
+                </a>
                 <nav>
                     <ul style={styles.menu}>
                         {['Skills', 'Experience', 'Projects', 'Education'].map((item) => (
                             <li key={item}>
-                                <a href={`#${item.toLowerCase()}`} style={styles.link} className='nav-link'>
+                                <a href={`#${item.toLowerCase()}`} className='nav-link'>
                                     {item}
                                 </a>
                             </li>
                         ))}
-                        <li>
+                        <li style={{ marginLeft: '10px' }}>
                             <a href="#contact" className="btn btn-outline" style={{ padding: '8px 20px', fontSize: '0.9rem' }}>Contact</a>
                         </li>
                     </ul>

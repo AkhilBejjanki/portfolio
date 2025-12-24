@@ -6,7 +6,7 @@ const Hero = () => {
             minHeight: '100vh',
             display: 'flex',
             alignItems: 'center',
-            paddingTop: '80px', // Header offset
+            paddingTop: '80px',
             position: 'relative',
             overflow: 'hidden'
         },
@@ -44,24 +44,11 @@ const Hero = () => {
         actions: {
             display: 'flex',
             gap: '20px'
-        },
-        blob: {
-            position: 'absolute',
-            width: '500px',
-            height: '500px',
-            background: 'radial-gradient(circle, rgba(0,229,255,0.15) 0%, rgba(112,0,255,0.05) 50%, transparent 70%)',
-            top: '50%',
-            right: '-10%',
-            transform: 'translateY(-50%)',
-            borderRadius: '50%',
-            zIndex: 1,
-            pointerEvents: 'none'
         }
     };
 
     return (
         <section style={styles.section} id="home">
-            <div style={styles.blob}></div>
             <div className="container">
                 <div style={styles.content}>
                     <span style={styles.greeting} className="fade-in">Hi, my name is</span>
@@ -70,7 +57,7 @@ const Hero = () => {
 
                     <p style={{ ...styles.description, animationDelay: '0.3s' }} className="fade-in">
                         Full Stack Developer specializing in building exceptional digital experiences.
-                        Currently creating producion-ready features and gamification systems at
+                        Currently creating production-ready features and gamification systems at
                         <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}> Dehix</span>.
                     </p>
 

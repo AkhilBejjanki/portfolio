@@ -4,19 +4,19 @@
   --bg-primary: #050505;
   --bg-secondary: #0f0f11;
   --bg-card: #161618;
-  
+
   --text-primary: #f0f0f0;
   --text-secondary: #a0a0a0;
   --text-accent: #00e5ff;
-  
+
   --primary: #00e5ff;
   --secondary: #7000ff;
-  
+
   --gradient-main: linear-gradient(135deg, var(--primary), var(--secondary));
   --gradient-text: linear-gradient(90deg, #fff, #bbb);
-  
+
   --font-main: 'Outfit', sans-serif;
-  
+
   --transition: all 0.3s ease;
   --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 20px rgba(0, 229, 255, 0.15);
@@ -37,6 +37,22 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(112, 0, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 90% 60%, rgba(0, 229, 255, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 a {
@@ -53,9 +69,16 @@ section {
   padding: 80px 20px;
   max-width: var(--max-width);
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--text-primary);
   font-weight: 700;
   line-height: 1.2;
@@ -74,9 +97,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-title::after {
@@ -126,23 +150,60 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--bg-secondary);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }
 
 /* Animation Utilities */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fade-in {
   animation: fadeIn 0.8s ease forwards;
+  will-change: transform, opacity;
+}
+
+.nav-link {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--primary) !important;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary);
+  transition: var(--transition);
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
