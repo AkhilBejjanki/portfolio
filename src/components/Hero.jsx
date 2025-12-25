@@ -49,24 +49,69 @@ const Hero = () => {
 
     return (
         <section style={styles.section} id="home">
-            <div className="container">
+            <div className="container hero-container">
                 <div style={styles.content}>
-                    <span style={styles.greeting} className="fade-in">Hi, my name is</span>
-                    <h1 style={{ ...styles.title, animationDelay: '0.1s' }} className="fade-in">Bejjanki Akhil Krishna.</h1>
-                    <h2 style={{ ...styles.subtitle, animationDelay: '0.2s' }} className="fade-in">I build things for the web.</h2>
+                    <span style={styles.greeting} className="fade-in">
+                        Hi, my name is
+                    </span>
 
-                    <p style={{ ...styles.description, animationDelay: '0.3s' }} className="fade-in">
-                        Full Stack Developer specializing in building exceptional digital experiences.
-                        Currently creating production-ready features and gamification systems at
+                    <h1 style={{ ...styles.title, animationDelay: '0.1s' }} className="fade-in">
+                        Bejjanki Akhil Krishna.
+                    </h1>
+
+                    <h2 style={{ ...styles.subtitle, animationDelay: '0.2s' }} className="fade-in">
+                        I build scalable web applications and production-ready backend systems.
+                    </h2>
+
+                    <p style={{ ...styles.description, animationDelay: '0.3s' }} className="fade-in hero-description">
+                        Backend-first Full Stack Developer creating scalable systems and secure APIs at
                         <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}> Dehix</span>.
                     </p>
 
-                    <div style={{ ...styles.actions, animationDelay: '0.4s' }} className="fade-in">
-                        <a href="#projects" className="btn btn-primary">Check out my work</a>
-                        <a href="mailto:akhilbejjanki02@gmail.com" className="btn btn-outline">Get In Touch</a>
+                    <div style={{ ...styles.actions, animationDelay: '0.4s' }} className="fade-in hero-actions">
+                        <a href="#projects" className="btn btn-primary">
+                            Check out my work
+                        </a>
+                        <a href="mailto:akhilbejjanki02@gmail.com" className="btn btn-outline">
+                            Get In Touch
+                        </a>
                     </div>
                 </div>
             </div>
+
+            {/* Responsive Styles */}
+            <style>
+                {`
+          /* Tablet */
+          @media (max-width: 768px) {
+            .hero-container {
+              text-align: center;
+            }
+
+            .hero-description {
+              margin: 0 auto 2rem auto !important;
+              font-size: 1rem !important;
+              max-width: 95% !important;
+            }
+
+            .hero-actions {
+              justify-content: center;
+            }
+          }
+
+          /* Mobile */
+          @media (max-width: 480px) {
+            #home {
+              padding-top: 60px !important;
+            }
+
+            .hero-actions {
+              flex-direction: column !important;
+              gap: 12px !important;
+            }
+          }
+        `}
+            </style>
         </section>
     );
 };

@@ -11,7 +11,8 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <main>
+
+      <main className="main-wrapper">
         <Hero />
         <Skills />
         <Experience />
@@ -19,9 +20,42 @@ function App() {
         <Education />
         <Contact />
       </main>
-      <footer style={{ textAlign: 'center', padding: '20px', color: 'var(--text-secondary)', fontSize: '0.9rem', borderTop: '1px solid var(--bg-secondary)', marginTop: '50px' }}>
-        <p>© {new Date().getFullYear()} Bejjanki Akhil Krishna. All rights reserved.</p>
+
+      <footer
+        style={{
+          textAlign: 'center',
+          padding: '20px',
+          color: 'var(--text-secondary)',
+          fontSize: '0.9rem',
+          borderTop: '1px solid var(--bg-secondary)',
+          marginTop: '50px'
+        }}
+      >
+        <p>
+          © {new Date().getFullYear()} Bejjanki Akhil Krishna. All rights reserved.
+        </p>
       </footer>
+
+      {/* Responsive Safe Styles */}
+      <style>
+        {`
+          .main-wrapper {
+            padding-top: 80px; /* header offset */
+          }
+
+          @media (max-width: 768px) {
+            .main-wrapper {
+              padding-top: 70px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .main-wrapper {
+              padding-top: 60px;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 }

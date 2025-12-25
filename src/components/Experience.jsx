@@ -72,17 +72,23 @@ const Experience = () => {
     return (
         <section id="experience">
             <div className="container">
-                <h2 className="section-title">Experience</h2>
+                <h2 className="section-title exp-title">Experience</h2>
+
                 <div style={styles.timeline}>
                     {experiences.map((exp, index) => (
-                        <div key={index} style={styles.item} className="experience-card">
+                        <div key={index} style={styles.item} className="experience-card exp-card">
                             <div style={styles.header}>
                                 <div>
-                                    <h3 style={styles.role}>{exp.role}</h3>
+                                    <h3 style={styles.role} className="exp-role">
+                                        {exp.role}
+                                    </h3>
                                     <div style={styles.company}>{exp.company}</div>
                                 </div>
-                                <div style={styles.period}>{exp.period} | {exp.location}</div>
+                                <div style={styles.period} className="exp-period">
+                                    {exp.period} | {exp.location}
+                                </div>
                             </div>
+
                             <ul style={styles.list}>
                                 {exp.description.map((item, i) => (
                                     <li key={i} style={styles.listItem} className="exp-bullet">
@@ -94,18 +100,57 @@ const Experience = () => {
                     ))}
                 </div>
             </div>
-            <style jsx>{`
-                .experience-card:hover {
-                    border-color: var(--primary);
-                    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
-                }
-                .exp-bullet::before {
-                    content: '▹';
-                    position: absolute;
-                    left: 0;
-                    color: var(--primary);
-                }
-            `}</style>
+
+            {/* Responsive Styles */}
+            <style>
+                {`
+          .experience-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+          }
+
+          .exp-bullet::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+          }
+
+          /* Tablet */
+          @media (max-width: 768px) {
+            .exp-title {
+              font-size: 2rem !important;
+            }
+
+            .exp-card {
+              padding: 28px !important;
+            }
+
+            .exp-role {
+              font-size: 1.3rem !important;
+            }
+
+            .exp-period {
+              font-size: 0.85rem !important;
+            }
+          }
+
+          /* Mobile */
+          @media (max-width: 480px) {
+            .exp-card {
+              padding: 22px !important;
+            }
+
+            .exp-role {
+              font-size: 1.2rem !important;
+            }
+
+            .exp-bullet {
+              font-size: 0.95rem !important;
+            }
+          }
+        `}
+            </style>
         </section>
     );
 };
